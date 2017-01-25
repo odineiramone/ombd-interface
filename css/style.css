@@ -9,3 +9,7 @@ body {
 .container {
   width: auto;
 }
+
+.result {
+  visibility: hidden;
+}
