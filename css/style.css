@@ -10,8 +10,15 @@ body {
 
 .explanatory-text {
   display:block;
+  margin-top: 2px;
   line-height: 1.2;
   font-size: 12px;
+}
+
+#plot {
+  margin-top: 20px;
+  line-height: 1.2;
+  font-size: 14px;
 }
 
 .container {
@@ -20,4 +27,9 @@ body {
 
 .result {
   visibility: hidden;
+}
+
+.movie-poster {
+  float: left;
+  margin-right: 10px;
 }

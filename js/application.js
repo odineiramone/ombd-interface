@@ -37,12 +37,20 @@ function processSearchResult (result) {
       t += tr;
     }
 
-    movieUrl = 'http://www.omdbapi.com/?i=' + search[0].imdbID + '&plot=full&r=json';
     document.getElementById("result").style.visibility = 'visible'
     document.getElementById("table-result").tBodies[0].innerHTML = t;
+
+    setCookie('movieUrl', 'http://www.omdbapi.com/?i=' + search[0].imdbID + '&plot=full&r=json');
   } else {
     alert(result.Error);
   }
+}
+
+function setCookie(cname, cvalue) {
+  var d = new Date();
+  d.setTime(d.getTime() + (60 * 60 * 1000));
+  var expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
 String.prototype.gsub = function(search, replacement) {
