@@ -33,7 +33,7 @@ function processSearchResult (result) {
     tr += "<td>" + search[i].Title + "</td>";
     tr += "<td>" + search[i].Year + "</td>";
     tr += "<td>" + search[i].Type + "</td>";
-    tr += "<td><a href=" + 'http://www.omdbapi.com/?i=' + search[0].imdbID + '&plot=full&r=json' + ">Movie page</a></td>";
+    tr += "<td><a title=\"Movie page\" href=" + 'http://www.omdbapi.com/?i=' + search[0].imdbID + '&plot=full&r=json' + "><span class=\"glyphicon glyphicon-film\"></span></a></td>";
     tr += "</tr>";
     t += tr;
   }
@@ -44,3 +44,9 @@ function processSearchResult (result) {
 String.prototype.gsub = function(search, replacement) {
   return this.split(search).join(replacement);
 };
+
+
+// bootstrap things
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});

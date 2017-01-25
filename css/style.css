@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Open+Sans');
+
 body {
   margin: 0 auto;
   max-width: 50em;
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: 'Open Sans', 'Fira Sans Condensed', sans-serif;
   line-height: 1.5;
   padding: 4em 1em;
+}
+
+.explanatory-text {
+  display:block;
+  line-height: 1.2;
+  font-size: 12px;
 }
 
 .container {
