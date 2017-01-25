@@ -16,19 +16,32 @@
       <div id="spinning">
         <span><i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Loading data. Wait please...</span>
       </div>
-      <div class="movie-info">
+      <div class="movie-info" id="movie-info">
         <h1 id="movie-name"></h1>
+        <hr>
         <div class="movie-poster">
           <img id="poster" src="" alt="" />
         </div>
         <div class="movie-texts">
           <span class="explanatory-text" id="year"></span>
           <span class="explanatory-text" id="released"></span>
+          <span class="explanatory-text" id="country"></span>
           <span class="explanatory-text" id="genre"></span>
           <span class="explanatory-text" id="runtime"></span>
+          <span class="explanatory-text" id="language"></span>
+          <span class="explanatory-text" id="rated"></span>
+          <hr>
           <span class="explanatory-text" id="director"></span>
           <span class="explanatory-text" id="writer"></span>
           <span class="explanatory-text" id="actors"></span>
+          <hr>
+          <span class="explanatory-text" id="awards"></span>
+          <span class="explanatory-text" id="metascore"></span>
+          <span class="explanatory-text" id="imdb-rating"></span>
+          <span class="explanatory-text" id="imdb-votes"></span>
+          <a class="explanatory-text" href="" target="_blank" id="imdb-page">Go to IMDb Page</a>
+          <hr>
+          <h3>Plot</h3>
           <p id="plot"></p>
         </div>
         <a onclick="window.history.back();" style="cursor:pointer">< back</a>

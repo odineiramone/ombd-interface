@@ -29,20 +29,34 @@ window.onload = function movieSearch() {
 
 function drawContent(content) {
   if (content.Response.toLowerCase() == "true") {
-    document.getElementById("spinning").style.visibility = 'hidden';
+    document.getElementById("spinning").style.display = 'none';
+    document.getElementById("movie-info").style.visibility = 'visible';
 
     document.getElementById('poster').src = content.Poster;
-    document.getElementById('poster').alt = content.Title + " poster";
 
     document.getElementById('movie-name').innerText = content.Title;
+
     document.getElementById('year').innerText = "Year: " + content.Year;
     document.getElementById('released').innerText = "Released: " + content.Released;
+    document.getElementById('country').innerText = "Country: " + content.Country;
     document.getElementById('genre').innerText = "Genre: " + content.Genre;
     document.getElementById('runtime').innerText = "Runtime: " + content.Runtime;
+    document.getElementById('language').innerText = "Language: " + content.Language;
+    document.getElementById('rated').innerText = "Rated: " + content.Rated;
+
     document.getElementById('director').innerText = "Director: " + content.Director;
     document.getElementById('writer').innerText = "Writer: " + content.Writer;
     document.getElementById('actors').innerText = "Actors: " + content.Actors;
     document.getElementById('plot').innerText = content.Plot;
+
+    document.getElementById('awards').innerText = "Awards: " + content.Awards;
+    document.getElementById('metascore').innerText = "Metascore: " + content.Metascore;
+    document.getElementById('imdb-rating').innerText = "IMDb Rating: " + content.imdbRating;
+    document.getElementById('imdb-votes').innerText = "IMDb Votes: " + content.imdbVotes;
+
+    document.getElementById('imdb-page').href = "http://www.imdb.com/title/" + content.imdbID;
+
+    debugger;
   } else {
     alert(content.Error);
   }

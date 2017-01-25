@@ -11,7 +11,7 @@ body {
 .explanatory-text {
   display:block;
   margin-top: 2px;
-  line-height: 1.2;
+  line-height: 1.4;
   font-size: 12px;
 }
 
@@ -32,4 +32,8 @@ body {
 .movie-poster {
   float: left;
   margin-right: 10px;
+}
+
+.movie-info {
+  visibility: hidden;
 }
