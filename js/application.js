@@ -2,16 +2,14 @@ function processSearch() {
   let inputTitle = document.querySelector('input[name=title]');
   inputTitle = inputTitle.value.trim();
   if (inputTitle.length > 0) {
-    movieSearch(inputTitle);
+    movieName = inputTitle.gsub(' ', '+');
+    movieSearch('http://www.omdbapi.com/?s=' + movieName + '&r=json');
   } else {
     alert("a valid search please");
   }
 }
 
-function movieSearch(movieName) {
-  movieName = movieName.gsub(' ', '+');
-  let url = 'http://www.omdbapi.com/?s=' + movieName + '&r=json';
-
+function movieSearch(url) {
   let xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
   xhr.onreadystatechange = function() {
@@ -26,19 +24,20 @@ function movieSearch(movieName) {
 
 function processSearchResult (result) {
   if (result.Response.toLowerCase() == "true") {
-    search = result.Search;
-
+    var search = result.Search;
     var t = "";
+
     for (var i = 0; i < search.length; i++){
       var tr = "<tr>";
       tr += "<td>" + search[i].Title + "</td>";
       tr += "<td>" + search[i].Year + "</td>";
       tr += "<td>" + search[i].Type + "</td>";
-      tr += "<td><a title=\"Go to movie page\" href=" + 'http://www.omdbapi.com/?i=' + search[0].imdbID + '&plot=full&r=json' + "><span class=\"glyphicon glyphicon-film\"></span></a></td>";
+      tr += "<td><a title=\"Go to movie page\" href=\"movie_page.html\"><span class=\"glyphicon glyphicon-film\"></span></a></td>";
       tr += "</tr>";
       t += tr;
     }
-    
+
+    movieUrl = 'http://www.omdbapi.com/?i=' + search[0].imdbID + '&plot=full&r=json';
     document.getElementById("result").style.visibility = 'visible'
     document.getElementById("table-result").tBodies[0].innerHTML = t;
   } else {
@@ -49,7 +48,6 @@ function processSearchResult (result) {
 String.prototype.gsub = function(search, replacement) {
   return this.split(search).join(replacement);
 };
-
 
 // bootstrap things
 $(document).ready(function(){
