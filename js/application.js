@@ -1,3 +1,5 @@
+var movieUrl;
+
 function processSearch() {
   let inputTitle = document.querySelector('input[name=title]');
   inputTitle = inputTitle.value.trim();
@@ -32,7 +34,7 @@ function processSearchResult (result) {
       tr += "<td>" + search[i].Title + "</td>";
       tr += "<td>" + search[i].Year + "</td>";
       tr += "<td>" + search[i].Type + "</td>";
-      tr += "<td><a title=\"Go to movie page\" href=\"movie_page.html\"><span class=\"glyphicon glyphicon-film\"></span></a></td>";
+      tr += "<td><a  style=\"cursor:pointer\" title=\"Go to movie page\" onClick=\"goToCookies('" + search[i].imdbID + "');\"><span class=\"glyphicon glyphicon-film\"></span></a></td>";
       tr += "</tr>";
       t += tr;
     }
@@ -40,10 +42,15 @@ function processSearchResult (result) {
     document.getElementById("result").style.visibility = 'visible'
     document.getElementById("table-result").tBodies[0].innerHTML = t;
 
-    setCookie('movieUrl', 'http://www.omdbapi.com/?i=' + search[0].imdbID + '&plot=full&r=json');
+    // setCookie('movieUrl', 'http://www.omdbapi.com/?i=' + search[0].imdbID + '&plot=full&r=json');
   } else {
     alert(result.Error);
   }
+}
+
+function goToCookies (imdbID) {
+  setCookie('movieUrl', 'http://www.omdbapi.com/?i=' + imdbID + '&plot=full&r=json');
+  window.location = "movie_page.html";
 }
 
 function setCookie(cname, cvalue) {

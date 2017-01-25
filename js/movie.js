@@ -29,6 +29,8 @@ window.onload = function movieSearch() {
 
 function drawContent(content) {
   if (content.Response.toLowerCase() == "true") {
+    document.getElementById("spinning").style.visibility = 'hidden';
+
     document.getElementById('poster').src = content.Poster;
     document.getElementById('poster').alt = content.Title + " poster";
 
@@ -41,8 +43,6 @@ function drawContent(content) {
     document.getElementById('writer').innerText = "Writer: " + content.Writer;
     document.getElementById('actors').innerText = "Actors: " + content.Actors;
     document.getElementById('plot').innerText = content.Plot;
-
-    debugger;
   } else {
     alert(content.Error);
   }
