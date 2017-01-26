@@ -1,5 +1,3 @@
-var movieUrl;
-
 function processSearch() {
   let inputTitle = document.querySelector('input[name=title]');
   inputTitle = inputTitle.value.trim();
@@ -17,11 +15,15 @@ function movieSearch(url) {
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       if (xhr.status = 200) {
-        processSearchResult(JSON.parse(xhr.responseText));
+        call4Pages(JSON.parse(xhr.responseText));
       }
     }
   }
   xhr.send();
+}
+
+function call4Pages(result) {
+  processSearchResult(result);
 }
 
 function processSearchResult (result) {
@@ -41,8 +43,6 @@ function processSearchResult (result) {
 
     document.getElementById("result").style.visibility = 'visible'
     document.getElementById("table-result").tBodies[0].innerHTML = t;
-
-    // setCookie('movieUrl', 'http://www.omdbapi.com/?i=' + search[0].imdbID + '&plot=full&r=json');
   } else {
     alert(result.Error);
   }
@@ -63,8 +63,3 @@ function setCookie(cname, cvalue) {
 String.prototype.gsub = function(search, replacement) {
   return this.split(search).join(replacement);
 };
-
-// bootstrap things
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
