@@ -1,5 +1,5 @@
 function processSearch() {
-  let inputTitle = document.querySelector('input[name=title]');
+  let inputTitle = document.getElementById("title");
   inputTitle = inputTitle.value.trim();
   if (inputTitle.length > 0) {
     movieName = inputTitle.gsub(' ', '+');
@@ -59,6 +59,12 @@ function setCookie(cname, cvalue) {
   var expires = "expires="+d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
+
+document.getElementById("title").addEventListener("keydown", function (e) {
+  if (e.keyCode === 13 && document.activeElement.id ==  "title") {
+    processSearch();
+  }
+});
 
 String.prototype.gsub = function(search, replacement) {
   return this.split(search).join(replacement);
