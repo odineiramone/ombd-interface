@@ -32,11 +32,11 @@ function processSearchResult (result) {
     var t = "";
 
     for (var i = 0; i < search.length; i++){
-      var tr = "<tr>";
+      var tr = "<tr style=\"cursor:pointer\" onClick=\"goToCookies('" + search[i].imdbID + "');\">";
       tr += "<td>" + search[i].Title + "</td>";
       tr += "<td>" + search[i].Year + "</td>";
       tr += "<td>" + search[i].Type + "</td>";
-      tr += "<td><a  style=\"cursor:pointer\" title=\"Go to movie page\" onClick=\"goToCookies('" + search[i].imdbID + "');\"><span class=\"glyphicon glyphicon-film\"></span></a></td>";
+      tr += "<td><a><span class=\"glyphicon glyphicon-film\"></span></a></td>";
       tr += "</tr>";
       t += tr;
     }

@@ -55,8 +55,6 @@ function drawContent(content) {
     document.getElementById('imdb-votes').innerText = "IMDb Votes: " + content.imdbVotes;
 
     document.getElementById('imdb-page').href = "http://www.imdb.com/title/" + content.imdbID;
-
-    debugger;
   } else {
     alert(content.Error);
   }
