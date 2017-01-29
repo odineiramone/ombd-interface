@@ -1,3 +1,5 @@
+var movieName;
+
 function processSearch() {
   let inputTitle = document.getElementById("title");
   inputTitle = inputTitle.value.trim();
@@ -15,18 +17,14 @@ function movieSearch(url) {
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       if (xhr.status = 200) {
-        call4Pages(JSON.parse(xhr.responseText));
+        createTable(JSON.parse(xhr.responseText));
       }
     }
   }
   xhr.send();
 }
 
-function call4Pages(result) {
-  processSearchResult(result);
-}
-
-function processSearchResult (result) {
+function createTable (result) {
   if (result.Response.toLowerCase() == "true") {
     var search = result.Search;
     var t = "";
@@ -42,9 +40,18 @@ function processSearchResult (result) {
     }
 
     document.getElementById("result").style.visibility = 'visible'
-    document.getElementById("table-result").tBodies[0].innerHTML = t;
+    document.getElementById("table-result").tBodies[0].innerHTML += t;
   } else {
     alert(result.Error);
+  }
+}
+
+function nextPage (previousResult) {
+  total_pages = (previousResult.totalResults.to_i() / 10).ceil();
+
+  for (var i = 0; i <= total_pages; i++) {
+    url = 'http://www.omdbapi.com/?s=' + movieName + '&p=' + i + '&r=json';
+    movieSearch(url);
   }
 }
 
@@ -68,4 +75,12 @@ document.getElementById("title").addEventListener("keydown", function (e) {
 
 String.prototype.gsub = function(search, replacement) {
   return this.split(search).join(replacement);
+};
+
+String.prototype.to_i = function() {
+  return parseInt(this);
+};
+
+Number.prototype.ceil = function() {
+  return Math.ceil(this);
 };
